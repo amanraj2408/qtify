@@ -86,10 +86,11 @@ function Search({ searchData, placeholder }) {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
             // console.log(option);
-            const artists = option.songs.reduce((accumulator, currentValue) => {
+            const artists = (option.songs || []).reduce((accumulator, currentValue) => {
               accumulator.push(...currentValue.artists);
               return accumulator;
             }, []);
+
 
             return (
               <li

@@ -13,8 +13,13 @@ function App() {
   const [data, setData] = useState({});
 
   const generateData = (key, source) => {
-    source().then((data) => {
-      setData((prevState) => ({ ...prevState, [key]: data }));
+    source().then((result) => {
+      if (result) {
+        setData((prevState) => ({ ...prevState, [key]: result }));
+      } else {
+        console.error(`Failed to fetch ${key}`);
+        setData((prevState) => ({ ...prevState, [key]: [] }));
+      }
     });
   };
 

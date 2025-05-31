@@ -6,8 +6,8 @@ import Section from "../../Section/Section";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
-  const { data } = useOutletContext();
-  const { newAlbums, topAlbums, songs, genres } = data;
+  const context = useOutletContext();
+  const { newAlbums = [], topAlbums = [], songs = [], genres = [] } = context?.data || {};
 
   console.log("genres", genres);
 
